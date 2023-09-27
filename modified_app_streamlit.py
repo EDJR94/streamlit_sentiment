@@ -1,5 +1,5 @@
 import streamlit as st
-
+import sentiment_analysis_model as sam
 import time
 
 # URL da sua API Flask
