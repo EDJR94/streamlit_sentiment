@@ -2,7 +2,7 @@ import streamlit as st
 import sentiment_analysis_model as sam
 
 # Page configuration
-st.set_page_config(page_title="🤖 Sentiment Analysis App 🤖", layout="wide")
+st.set_page_config(page_title="🤖 Sentiment Analysis App 🤖", layout="centered", initial_sidebar_state="expanded", page_icon='🤖')
 
 # Adding title with robot emojis
 st.title("🤖 Sentiment Analysis App 🤖")
