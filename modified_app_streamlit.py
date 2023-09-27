@@ -1,39 +1,35 @@
 import streamlit as st
 import sentiment_analysis_model as sam
-import time
 
-# URL da sua API Flask
+# Page configuration
+st.set_page_config(page_title="🤖 Sentiment Analysis App 🤖", layout="centered")
+
+# Adding title with robot emojis
+st.title("🤖 Sentiment Analysis App 🤖")
+st.write("Welcome to the sentiment analysis application. Enter a review below to get the sentiment!")
+
+# Instructions
+st.sidebar.header("Instructions")
+st.sidebar.text("1. Write a review in the text box.")
+st.sidebar.text("2. Click on the 'Predict' button.")
+st.sidebar.text("3. View the sentiment result.")
+
+# Taking user input
+user_input = st.text_area("Write a review here:")
+
+# Adding a Predict button
+if st.button('Predict'):
+    # Feedback message while processing
+    with st.spinner("Analyzing..."):
+        sentiment = sam.predict_sentiment(user_input)
+
+    # Displaying the result with emojis
+    st.subheader("Sentiment Result:")
+    if sentiment == "Positive":
+        st.success(f"😊 {sentiment}")
+    elif sentiment == "Negative":  # Fixed this part
+        st.error(f"😞 {sentiment}")
 
 
-#Image
-#st.image('\\wsl.localhost\Ubuntu\home\edilson07\projects\sentiment_analysis\api\sentiment_robot.png', width=100)
-
-
-st.title("Sentiment Analysis Prediction")
-
-# Campo de texto para o usuário inserir a revisão
-user_input = st.text_area("Enter your review:")
-
-# Botão para fazer a previsão
-if st.button("Predict"):
-    # Enviar a revisão para a API Flask e obter a previsão
-    sentiment = sam.predict_sentiment(user_input)
-    with st.spinner(text="Predicting..."):
-        time.sleep(2)    
-    
-    # Verifique se a resposta foi bem-sucedida
-    if sentiment:
-        
-        #st.write(f"Response from API: {json_response}")  # Escreva a resposta completa para depuração
-        
-        # Tente obter a previsão
-        try:
-            prediction = sentiment
-            if prediction == "Positive":
-                st.markdown("**Sentiment:** :smile: Positive!")
-            else:
-                st.markdown("**Sentiment:** :disappointed: Negative!")
-        except KeyError:
-            st.write("Key 'sentiment' not found in the API response.")
 
 
