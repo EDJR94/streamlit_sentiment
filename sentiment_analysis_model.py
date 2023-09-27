@@ -38,12 +38,20 @@ def process_text(text):
     return text
 
 def predict_sentiment(text):
-    """Prevê o sentimento de um texto."""
+    """Prevê o sentimento de um texto com base em intervalos de probabilidade."""
     text = process_text(text)
     sequence_text = tokenizer.texts_to_sequences([text])
     X_text = pad_sequences(sequence_text, maxlen=MAX_SEQUENCE_LENGTH)
-    y_pred = model.predict(X_text)
-    sentiment = "Positive" if y_pred > 0.5 else "Negative"
+    y_pred = model.predict(X_text)[0][0]
+
+    # Definir intervalos de sentimento
+    if y_pred >= 0.6:
+        sentiment = "Positive"
+    elif y_pred <= 0.4:
+        sentiment = "Negative"
+    else:
+        sentiment = "Neutral"
+
     return sentiment
 
 

@@ -29,6 +29,8 @@ if st.button('Predict'):
         st.success(f"😊 {sentiment}")
     elif sentiment == "Negative":  # Fixed this part
         st.error(f"😞 {sentiment}")
+    else:
+        st.info(f"🤔 Neutral")
 
 
 
