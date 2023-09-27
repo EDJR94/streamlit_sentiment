@@ -11,7 +11,6 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 
 # Inicializando o lemmatizer e o conjunto de stopwords
 
-nltk.download('stopwords')
 english_stopwords = set(stopwords.words('english'))
 
 # Carregar o modelo treinado e o tokenizer
@@ -27,15 +26,13 @@ MAX_SEQUENCE_LENGTH = 512
 
 # Funções necessárias
 
-def (word):
-    """Lematiza uma palavra."""
-    return lemmatizer.lemmatize(word)
+
 
 def process_text(text):
     """Processa o texto."""
     text = ''.join([char for char in text if char not in string.punctuation])
     words = text.split()
-    filtered_and_lemmatized_words = [(word) for word in words if word.lower() not in english_stopwords]
+    filtered_and_lemmatized_words = [word for word in words if word.lower() not in english_stopwords]
     text = ' '.join(filtered_and_lemmatized_words)
     text = re.sub(r'\s+', ' ', text).strip().lower()
     return text
