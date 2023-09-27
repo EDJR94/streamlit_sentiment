@@ -23,7 +23,7 @@ if st.button("Predict"):
     
     # Verifique se a resposta foi bem-sucedida
     if sentiment:
-        json_response = response.json()
+        
         #st.write(f"Response from API: {json_response}")  # Escreva a resposta completa para depuração
         
         # Tente obter a previsão
