@@ -6,6 +6,7 @@ import nltk
 import os
 from nltk.corpus import stopwords
 from nltk.corpus.reader import wordnet
+from nltk.stem import WordNetLemmatizer
 
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
