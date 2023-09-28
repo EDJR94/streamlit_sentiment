@@ -61,9 +61,9 @@ def predict_sentiment(text):
     y_pred = model.predict(X_text)[0][0]
 
     # Definir intervalos de sentimento
-    if y_pred >= 0.7:
+    if y_pred >= 0.75:
         sentiment = "Positive"
-    elif y_pred <= 0.3:
+    elif y_pred <= 0.25:
         sentiment = "Negative"
     else:
         sentiment = "Neutral"
