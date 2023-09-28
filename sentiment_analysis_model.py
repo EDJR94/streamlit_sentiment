@@ -3,6 +3,7 @@ import re
 import string
 import pickle
 import nltk
+import os
 from nltk.corpus import stopwords
 
 from tensorflow.keras.models import load_model
@@ -10,6 +11,10 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.preprocessing.text import Tokenizer
 
 # Inicializando o lemmatizer e o conjunto de stopwords
+
+current_directory = os.path.dirname(os.path.realpath(__file__))
+wordnet_path = os.path.join(current_directory, 'wordnet')
+nltk.data.path.append(wordnet_path)
 
 english_stopwords = set(["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "you're", "you've",
     "you'll", "you'd", "your", "yours", "yourself", "yourselves", "he", "him", "his",
