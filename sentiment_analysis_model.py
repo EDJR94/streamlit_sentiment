@@ -18,6 +18,8 @@ current_directory = os.path.dirname(os.path.realpath(__file__))
 wordnet_path = os.path.join(current_directory, 'wordnet')
 nltk.data.path.append(wordnet_path)
 
+print(nltk.data.path)
+
 english_stopwords = set(["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "you're", "you've",
     "you'll", "you'd", "your", "yours", "yourself", "yourselves", "he", "him", "his",
     "himself", "she", "she's", "her", "hers", "herself", "it", "it's", "its", "itself",
