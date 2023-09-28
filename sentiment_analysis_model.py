@@ -42,13 +42,20 @@ MAX_SEQUENCE_LENGTH = 512
 
 # Funções necessárias
 
+lemmatizer = WordNetLemmatizer()
+
+def lemmatize_word(word):
+    lemma = lemmatizer.lemmatize(word, pos=wordnet.VERB)
+    return lemmatizer.lemmatize(lemma, pos=wordnet.NOUN)
 
 
 def process_text(text):
     """Processa o texto."""
+    text = text.lower()
     text = ''.join([char for char in text if char not in string.punctuation])
     words = text.split()
-    filtered_and_lemmatized_words = [word for word in words if word.lower() not in english_stopwords]
+    #filtered_and_lemmatized_words = [word for word in words if word.lower() not in english_stopwords]
+    filtered_and_lemmatized_words = [lemmatize_word(word) for word in words if word.lower() not in english_stopwords]
     text = ' '.join(filtered_and_lemmatized_words)
     text = re.sub(r'\s+', ' ', text).strip().lower()
     return text
